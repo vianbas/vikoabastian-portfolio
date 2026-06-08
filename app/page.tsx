@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import CaseStudies from "@/components/CaseStudies";
+import LiveProjects from "@/components/LiveProjects";
 import DevSecOpsWorkflow from "@/components/DevSecOps";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
@@ -19,6 +20,7 @@ export default function Home() {
         <Skills />
         <Experience />
         <CaseStudies />
+        <LiveProjects />
         <DevSecOpsWorkflow />
         <Education />
         <Contact />
