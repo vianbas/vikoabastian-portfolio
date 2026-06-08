@@ -67,10 +67,21 @@ export default function OpengraphImage() {
               fontSize: 28,
               color: "#0284c7",
               fontFamily: "monospace",
-              marginBottom: 24,
+              marginBottom: 16,
             }}
           >
             {`// ${siteConfig.location}`}
+          </div>
+          <div
+            style={{
+              fontSize: 32,
+              fontWeight: 600,
+              color: "#334155",
+              marginBottom: 20,
+              letterSpacing: "-0.01em",
+            }}
+          >
+            {siteConfig.name}
           </div>
           <div
             style={{

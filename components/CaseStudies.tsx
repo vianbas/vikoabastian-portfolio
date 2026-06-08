@@ -44,7 +44,7 @@ export default function CaseStudies() {
               </ul>
 
               {/* Tech stack */}
-              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200">
+              <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200 mb-3">
                 {cs.tech.map((t) => (
                   <span
                     key={t}
@@ -54,6 +54,11 @@ export default function CaseStudies() {
                   </span>
                 ))}
               </div>
+
+              {/* NDA note */}
+              <p className="text-[11px] text-slate-400 font-mono">
+                NDA · details available on request
+              </p>
             </article>
           ))}
         </div>

@@ -15,7 +15,9 @@ const about = [
 ];
 
 const actions: { label: string; href: string; download?: boolean }[] = [
+  { label: "./view-experience", href: "#experience" },
   { label: "./view-case-studies", href: "#case-studies" },
+  { label: "./view-live-projects", href: "#live-projects" },
   { label: "./download-resume.pdf", href: siteConfig.resumeUrl, download: true },
   { label: "./contact", href: "#contact" },
 ];

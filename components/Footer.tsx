@@ -24,12 +24,20 @@ export default function Footer() {
               Email
             </a>
             <a
-              href={`https://${siteConfig.linkedinDisplay}`}
+              href={siteConfig.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
             >
               LinkedIn
+            </a>
+            <a
+              href={siteConfig.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
+            >
+              GitHub
             </a>
             <a
               href={siteConfig.resumeUrl}
