@@ -1,8 +1,6 @@
 import { siteConfig } from "@/data/site";
 
 export default function Footer() {
-  const year = new Date().getFullYear();
-
   return (
     <footer className="border-t border-slate-200 bg-slate-50 py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,7 +49,7 @@ export default function Footer() {
 
         <div className="mt-6 pt-6 border-t border-slate-200 text-center">
           <p className="text-slate-500 text-xs">
-            © {year} {siteConfig.name}. Built with Next.js, TypeScript &amp; Tailwind CSS.
+            © 2024–present {siteConfig.name}. Built with Next.js, TypeScript &amp; Tailwind CSS.
           </p>
         </div>
       </div>
