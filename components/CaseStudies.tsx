@@ -30,7 +30,8 @@ export default function CaseStudies() {
                 {cs.title}
               </h3>
 
-              {/* Role */}
+              {/* Period + Role */}
+              <p className="text-slate-400 text-xs font-mono mb-1">{cs.period}</p>
               <p className="text-sky-700 text-xs mb-4">{cs.role}</p>
 
               {/* Highlights */}

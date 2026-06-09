@@ -1,6 +1,7 @@
 export interface CaseStudy {
   id: string;
   title: string;
+  period: string;
   domain: string;
   role: string;
   tech: string[];
@@ -11,6 +12,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "echannel-go",
     title: "E-Channel Go — ATM & CRM Monitoring and Reporting Platform",
+    period: "2024–2025",
     domain: "E-channel banking · ATM/CRM operations · Monitoring · Reporting",
     role: "Fullstack Engineer / DevOps Support / Security Remediation Support",
     tech: ["Spring Boot", "React.js", "SQL Server", "Jenkins", "Mandiri Private Cloud"],
@@ -26,6 +28,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "orp-skn",
     title: "ORP — SKN Incoming Debet & WAPU Tax Collection Platform",
+    period: "2025",
     domain: "Banking · National clearing · Tax collection · Secure access",
     role: "Fullstack / Backend / DevOps Engineer",
     tech: ["Spring Boot", "Microservices", "React.js", "Oracle SQL", "Red Hat SSO", "Jenkins"],
@@ -40,6 +43,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "dispute-management",
     title: "Enterprise Banking Dispute Management System",
+    period: "2025–present",
     domain: "Banking · Transaction dispute · Workflow automation",
     role: "Fullstack / Backend / DevOps Engineer",
     tech: ["Spring Boot", "Microservices", "AngularJS", "Oracle SQL", "Flowable BPMN", "Jenkins"],
@@ -54,6 +58,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "core-banking-tt-rtgs",
     title: "Core Banking — Telegraphic Transfer & RTGS Services",
+    period: "2022–2024",
     domain: "Core banking · International remittance · High-value domestic payment",
     role: "Software Engineer / Maintenance Engineer",
     tech: ["Java Struts 1", "JSP", "JavaScript", "Oracle", "WebSphere", "AngularJS", "OPF Framework"],
@@ -68,6 +73,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "kita-kitchen",
     title: "Kita Kitchen — Restaurant Website & Tenant Management Dashboard",
+    period: "2020",
     domain: "Restaurant operations · Tenant management · Cloud deployment",
     role: "Fullstack Engineer / DevOps Engineer",
     tech: ["Go", "PHP Laravel", "MySQL", "GCP", "Nginx"],
@@ -83,6 +89,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "ipg-linkaja",
     title: "Internet Payment Gateway — LinkAja Integration",
+    period: "2019–2020",
     domain: "Digital wallet · Payment gateway · REST API integration",
     role: "Backend / Integration Engineer",
     tech: ["Java Spring", "JavaScript", "REST API"],
