@@ -14,4 +14,6 @@ export const siteConfig = {
   headline: "Fullstack Software Engineer & DevSecOps Engineer",
   subheadline: "I build secure, reliable, and maintainable software systems across frontend, backend, database, infrastructure, CI/CD, and production operations.",
   resumeUrl: "/resume-viko.pdf",
+  availableForRoles: true,
+  availableForRolesText: "available for senior roles",
 };

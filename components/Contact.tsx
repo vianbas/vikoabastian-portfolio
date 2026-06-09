@@ -48,7 +48,7 @@ export default function Contact() {
             </div>
             <div>
               <div className="text-slate-500 text-xs mb-1">LinkedIn</div>
-              <div className="text-slate-800 text-sm font-medium group-hover:text-sky-700 transition-colors">
+              <div className="text-slate-800 text-sm font-medium group-hover:text-sky-700 transition-colors break-all">
                 {siteConfig.linkedinDisplay}
               </div>
             </div>

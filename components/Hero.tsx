@@ -77,12 +77,14 @@ export default function Hero() {
 
       <div className="relative z-10 w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Eyebrow */}
-        <div className="flex justify-center mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-200 bg-sky-50 text-sky-700 text-xs font-mono tracking-widest uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-            available for senior roles
+        {siteConfig.availableForRoles && (
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-200 bg-sky-50 text-sky-700 text-xs font-mono tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+              {siteConfig.availableForRolesText}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Terminal content */}
         <div className="font-mono text-sm sm:text-base leading-relaxed space-y-6">
