@@ -32,8 +32,9 @@ function StatCard({
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
-      setStarted(true);
-      return;
+      // Defer with rAF to avoid synchronous setState in the effect body.
+      const raf = requestAnimationFrame(() => setStarted(true));
+      return () => cancelAnimationFrame(raf);
     }
     const observer = new IntersectionObserver(
       (entries) => {
@@ -52,8 +53,9 @@ function StatCard({
   useEffect(() => {
     if (!started) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setDisplay(target);
-      return;
+      // Jump straight to the target, deferred to avoid synchronous setState.
+      const raf = requestAnimationFrame(() => setDisplay(target));
+      return () => cancelAnimationFrame(raf);
     }
     const duration = 1100;
     const start = performance.now();

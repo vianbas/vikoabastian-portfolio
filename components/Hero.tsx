@@ -87,9 +87,13 @@ export default function Hero() {
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) {
-      setLive({ group: groups.length, typed: "", shown: 0 });
-      setFinished(true);
-      return;
+      // Show everything instantly. Defer with rAF so we don't call setState
+      // synchronously inside the effect body.
+      const raf = requestAnimationFrame(() => {
+        setLive({ group: groups.length, typed: "", shown: 0 });
+        setFinished(true);
+      });
+      return () => cancelAnimationFrame(raf);
     }
 
     let cancelled = false;
