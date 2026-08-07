@@ -22,8 +22,10 @@ export default function Reveal({ children, delay = 0, className = "" }: RevealPr
     if (!el) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      setVisible(true);
-      return;
+      // No IO support: reveal immediately. Defer with rAF so we don't call
+      // setState synchronously inside the effect body.
+      const raf = requestAnimationFrame(() => setVisible(true));
+      return () => cancelAnimationFrame(raf);
     }
 
     const observer = new IntersectionObserver(
