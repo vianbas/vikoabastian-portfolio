@@ -10,6 +10,23 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    company: "ArtSwara (PT Mahhasa Artswara Persada)",
+    role: "Freelance Fullstack Web Developer",
+    period: "June 2026 – Present",
+    location: "Jakarta",
+    type: "Contract",
+    summary:
+      "Developing the ArtSwara e-commerce platform (artswara.co.id) under a service agreement with PT Asia Media Grup Agensi — customer e-commerce features, admin panel, and an offline POS module integrated with the existing ticketing system.",
+    highlights: [
+      "Built customer features: product catalog, shopping cart, checkout, and payment",
+      "Integrated Midtrans payment gateway and courier/expedition APIs",
+      "Developed admin panel with dashboard, product, inventory, order, shipping, voucher management, and reports",
+      "Built voucher system tied to the ArtSwara ticketing platform",
+      "Delivered offline Point of Sales (POS) module with automatic transaction sync",
+      "Integrated the e-commerce module with the existing ArtSwara ticketing system",
+    ],
+  },
+  {
     company: "PT Bank Mandiri (Persero) Tbk",
     role: "Software Engineer",
     period: "July 2020 – Present",

@@ -10,6 +10,26 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "artswara-ecommerce",
+    title: "ArtSwara — E-Commerce Platform & Ticketing Integration",
+    period: "2026",
+    domain: "E-commerce · Payment gateway · Logistics · Ticketing · POS",
+    role: "Freelance Fullstack Web Developer (Contract)",
+    tech: ["Laravel", "React", "Inertia.js", "Vite", "Tailwind CSS", "MySQL", "Midtrans", "RabbitMQ"],
+    highlights: [
+      "Developed product catalog with categories and search",
+      "Built shopping cart with automatic transaction calculation",
+      "Implemented checkout with customer, transaction, and shipping data",
+      "Integrated Midtrans payment gateway with automatic status sync",
+      "Integrated courier APIs for order, track & trace, tariff, and pickup",
+      "Built automated email notification system for transaction and order updates",
+      "Developed voucher system integrated with the ArtSwara ticketing platform",
+      "Built admin panel: dashboard, product/category/inventory/order/shipping/voucher management, reports",
+      "Developed offline Point of Sales (POS) module synced with the main system",
+      "Integrated with the existing ArtSwara ticketing system",
+    ],
+  },
+  {
     id: "echannel-go",
     title: "E-Channel Go — ATM & CRM Monitoring and Reporting Platform",
     period: "2024–2025",
