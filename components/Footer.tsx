@@ -1,56 +1,99 @@
 import { siteConfig } from "@/data/site";
 
+const exploreLinks = [
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Experience", href: "#experience" },
+  { label: "Case Studies", href: "#case-studies" },
+  { label: "Projects", href: "#live-projects" },
+  { label: "DevSecOps", href: "#devsecops" },
+];
+
+const contactLinks = [
+  { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
+  { label: "LinkedIn", href: siteConfig.linkedin, external: true },
+  { label: "GitHub", href: siteConfig.github, external: true },
+  { label: "Resume", href: siteConfig.resumeUrl, download: true },
+];
+
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50 py-10">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-slate-600 text-sm">
-              <span className="text-slate-900 font-semibold">{siteConfig.shortName}</span>
-              {" — "}
-              Fullstack Software Engineer &amp; DevSecOps Engineer
+    <footer className="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid gap-10 md:grid-cols-3">
+          {/* Brand */}
+          <div>
+            <a href="#hero" className="inline-block">
+              <span className="text-slate-900 font-bold text-lg tracking-tight dark:text-white">
+                <span className="text-sky-600 dark:text-sky-400">V</span>iko
+              </span>
+            </a>
+            <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs">
+              Fullstack Software Engineer &amp; DevSecOps Engineer building secure,
+              reliable systems for banking, fintech, payments, and enterprise platforms.
             </p>
-            <p className="text-slate-500 text-xs mt-1">{siteConfig.location}</p>
+            <p className="mt-3 text-xs text-slate-500 dark:text-slate-500">
+              {siteConfig.location}
+            </p>
           </div>
 
-          <div className="flex items-center gap-5">
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
-            >
-              Email
-            </a>
-            <a
-              href={siteConfig.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={siteConfig.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
-            >
-              GitHub
-            </a>
-            <a
-              href={siteConfig.resumeUrl}
-              download
-              className="text-slate-500 hover:text-sky-600 transition-colors text-sm"
-            >
-              Resume
-            </a>
+          {/* Explore */}
+          <div>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
+              Explore
+            </h3>
+            <ul className="space-y-2.5">
+              {exploreLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-slate-600 hover:text-sky-600 transition-colors dark:text-slate-400 dark:hover:text-sky-400"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h3 className="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
+              Contact
+            </h3>
+            <ul className="space-y-2.5">
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    {...(link.external
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
+                    {...(link.download ? { download: true } : {})}
+                    className="text-sm text-slate-600 hover:text-sky-600 transition-colors dark:text-slate-400 dark:hover:text-sky-400"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-slate-200 text-center">
-          <p className="text-slate-500 text-xs">
+        {/* Bottom bar */}
+        <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-slate-500 dark:text-slate-500">
             © 2024–present {siteConfig.name}. Built with Next.js, TypeScript &amp; Tailwind CSS.
           </p>
+          <a
+            href="#hero"
+            className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-sky-600 transition-colors dark:text-slate-400 dark:hover:text-sky-400"
+          >
+            Back to top
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>

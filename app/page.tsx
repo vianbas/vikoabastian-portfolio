@@ -10,10 +10,13 @@ import DevSecOpsWorkflow from "@/components/DevSecOps";
 import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
+import ScrollProgress from "@/components/ScrollProgress";
 
 export default function Home() {
   return (
     <>
+      <ScrollProgress />
       <Navbar />
       <main>
         <Hero />
@@ -28,6 +31,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

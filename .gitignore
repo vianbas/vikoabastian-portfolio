@@ -41,6 +41,9 @@ yarn-error.log*
 /.claude/
 /.continue/
 
+# local token storage (never commit)
+/.tokensave/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

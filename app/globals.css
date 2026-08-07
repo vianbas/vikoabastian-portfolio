@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Class-based dark mode: toggled by a `.dark` class on <html>.
+   Tailwind's default `dark:` variant uses prefers-color-scheme (media query);
+   this @custom-variant overrides it so the class drives dark mode instead. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -11,6 +16,12 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-color: #cbd5e1 #f1f5f9;
+  scrollbar-width: thin;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -20,10 +31,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark body {
+  background-color: #020617; /* slate-950 */
+  color: #e2e8f0; /* slate-200 */
+}
+
+/* Anchored sections should not hide under the fixed navbar */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
 :focus-visible {
   outline: 2px solid #0284c7;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+::selection {
+  background: #bae6fd;
+  color: #0c4a6e;
+}
+
+html.dark ::selection {
+  background: #075985;
+  color: #e0f2fe;
 }
 
 ::-webkit-scrollbar {
@@ -33,9 +64,179 @@ body {
   background: #f1f5f9;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: linear-gradient(#cbd5e1, #94a3b8);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #64748b;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(#334155, #475569);
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* ------------------------------------------------------------------ */
+/* Scroll reveal                                                       */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ------------------------------------------------------------------ */
+/* Gradient headings                                                   */
+/* ------------------------------------------------------------------ */
+.heading-gradient {
+  background-image: linear-gradient(
+    105deg,
+    #0f172a 20%,
+    #0369a1 70%,
+    #0ea5e9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+html.dark .heading-gradient {
+  background-image: linear-gradient(
+    105deg,
+    #f1f5f9 20%,
+    #38bdf8 70%,
+    #7dd3fc 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Subtle dot-grid texture                                             */
+/* ------------------------------------------------------------------ */
+.bg-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(15, 23, 42, 0.055) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+html.dark .bg-dot-grid {
+  background-image: radial-gradient(
+    circle,
+    rgba(226, 232, 240, 0.08) 1px,
+    transparent 1px
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero background grid (light + dark aware)                           */
+/* ------------------------------------------------------------------ */
+.hero-grid {
+  background-image: linear-gradient(rgba(15, 23, 42, 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.04;
+}
+
+html.dark .hero-grid {
+  background-image: linear-gradient(rgba(226, 232, 240, 1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(226, 232, 240, 1) 1px, transparent 1px);
+  opacity: 0.05;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero aurora + caret + entrances                                     */
+/* ------------------------------------------------------------------ */
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+  66% {
+    transform: translate(-30px, 20px) scale(0.95);
+  }
+}
+
+@keyframes aurora-drift-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-50px, 35px) scale(1.12);
+  }
+}
+
+.animate-aurora {
+  animation: aurora-drift 18s ease-in-out infinite;
+}
+
+.animate-aurora-slow {
+  animation: aurora-drift-slow 24s ease-in-out infinite;
+}
+
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.caret-blink {
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion: keep everything visible and calm                    */
+/* ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-aurora,
+  .animate-aurora-slow,
+  .caret-blink,
+  .fade-up {
+    animation: none;
+  }
 }
