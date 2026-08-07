@@ -11,6 +11,20 @@ export interface TimelineItem {
 
 export const timeline: TimelineItem[] = [
   {
+    type: "job",
+    title: "Freelance Fullstack Web Developer",
+    company: "ArtSwara (PT Mahhasa Artswara Persada)",
+    period: "June 2026 – Present",
+    location: "Jakarta",
+  },
+  {
+    type: "project",
+    title: "ArtSwara — E-Commerce & Ticketing Integration",
+    company: "ArtSwara (artswara.co.id)",
+    period: "2026",
+    tech: ["Laravel", "React", "Inertia.js", "Midtrans", "MySQL", "RabbitMQ"],
+  },
+  {
     type: "project",
     title: "Enterprise Banking Dispute Management System",
     company: "PT Bank Mandiri",
