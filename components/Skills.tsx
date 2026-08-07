@@ -1,4 +1,5 @@
 import { skillGroups } from "@/data/skills";
+import Reveal from "@/components/Reveal";
 
 const categoryIcons: Record<string, string> = {
   "Backend Engineering": "⚙",
@@ -10,54 +11,58 @@ const categoryIcons: Record<string, string> = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-slate-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sky-600 text-sm font-mono uppercase tracking-widest mb-3">
-            {"// Core Expertise"}
-          </p>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-            Skills &amp; Technologies
-          </h2>
-          <p className="mt-3 text-slate-600 max-w-xl mx-auto">
-            A breadth of skills across the full engineering stack, from backend services to infrastructure and security.
-          </p>
-        </div>
+    <section id="skills" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
+      {/* Subtle dot texture */}
+      <div className="absolute inset-0 bg-dot-grid pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Reveal>
+          <div className="text-center mb-14">
+            <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
+              {"// Core Expertise"}
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
+              Skills &amp; Technologies
+            </h2>
+            <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
+              A breadth of skills across the full engineering stack, from backend services to infrastructure and security.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {skillGroups.map((group) => (
-            <div
-              key={group.category}
-              className="p-6 rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-md hover:shadow-slate-200/60 transition-all group"
-            >
-              {/* Header */}
-              <div className="flex items-start gap-3 mb-4">
-                <span
-                  className="text-xl mt-0.5 text-sky-600"
-                  aria-hidden="true"
-                >
-                  {categoryIcons[group.category] ?? "▸"}
-                </span>
-                <div>
-                  <h3 className="text-slate-900 font-semibold text-base group-hover:text-sky-700 transition-colors">
-                    {group.category}
-                  </h3>
-                  <p className="text-slate-500 text-xs mt-0.5">{group.description}</p>
+          {skillGroups.map((group, i) => (
+            <Reveal key={group.category} delay={i * 70} className="h-full">
+              <div className="h-full p-6 rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 group dark:border-slate-800 dark:bg-slate-950 dark:hover:border-sky-800 dark:hover:shadow-black/40">
+                {/* Header */}
+                <div className="flex items-start gap-3 mb-4">
+                  <span
+                    className="text-xl mt-0.5 text-sky-600 dark:text-sky-400 group-hover:scale-110 transition-transform"
+                    aria-hidden="true"
+                  >
+                    {categoryIcons[group.category] ?? "▸"}
+                  </span>
+                  <div>
+                    <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-base group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors">
+                      {group.category}
+                    </h3>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs mt-0.5">{group.description}</p>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2">
+                  {group.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200 hover:border-sky-300 hover:text-sky-700 hover:bg-sky-50 transition-colors dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:border-sky-700 dark:hover:text-sky-300 dark:hover:bg-sky-950"
+                    >
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-700 border border-slate-200 hover:border-sky-300 hover:text-sky-700 hover:bg-sky-50 transition-colors"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

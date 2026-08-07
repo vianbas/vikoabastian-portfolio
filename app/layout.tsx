@@ -41,6 +41,24 @@ export const metadata: Metadata = {
   },
 };
 
+const themeInitScript = `(function(){try{var s=localStorage.getItem("theme");var d=s==="dark"||(!s&&window.matchMedia("(prefers-color-scheme: dark)").matches);if(d)document.documentElement.classList.add("dark");}catch(e){}})();`;
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  email: siteConfig.email,
+  jobTitle: "Fullstack Software Engineer & DevSecOps Engineer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Jakarta",
+    addressCountry: "ID",
+  },
+  sameAs: [siteConfig.linkedin, siteConfig.github],
+  knowsAbout: siteConfig.keywords,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -49,9 +67,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-white text-slate-900 antialiased">
+      <body className="min-h-screen bg-white text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-200">
+        {/* Apply theme before first paint to avoid flashing the wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Structured data (JSON-LD) for search engines */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         {children}
       </body>
     </html>
