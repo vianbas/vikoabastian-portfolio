@@ -1,11 +1,18 @@
 import { openSourceContributions } from "@/data/openSource";
 import Reveal from "@/components/Reveal";
 
-function statusBadge(status: "open" | "merged") {
+function statusBadge(status: "open" | "merged" | "closed") {
   if (status === "merged") {
     return (
       <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-violet-50 text-violet-700 border border-violet-200 uppercase tracking-wide dark:bg-violet-950 dark:text-violet-300 dark:border-violet-800">
         Merged
+      </span>
+    );
+  }
+  if (status === "closed") {
+    return (
+      <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-wide dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700">
+        Closed
       </span>
     );
   }
@@ -67,7 +74,7 @@ export default function OpenSource() {
                     </a>
                   </h3>
                   <p className="text-slate-400 dark:text-slate-500 text-xs font-mono mb-4">
-                    {c.repo} · PR #{c.prNumber} · {c.date} · +{c.additions}/−{c.deletions}
+                    PR #{c.prNumber} · {c.date} · {c.stars ? `⭐ ${c.stars} · ` : ""}+{c.additions}/−{c.deletions}
                   </p>
 
                   {/* Summary */}
