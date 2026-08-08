@@ -1,0 +1,57 @@
+name: Refresh Open Source Data
+
+on:
+  schedule:
+    # Daily 06:00 UTC — keep contribution data fresh without manual edits.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: refresh-open-source
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Refresh contribution data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Regenerate data/openSource.ts
+        run: node scripts/refresh-open-source.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          if git diff --quiet -- data/openSource.ts; then
+            echo "No data changes — nothing to commit"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/openSource.ts
+            git commit -m "chore(open-source): refresh contribution data"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # A push made with the default GITHUB_TOKEN does not re-trigger workflows,
+      # so once the data actually changes we dispatch the Pages deploy explicitly.
+      - name: Trigger Pages deployment
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run "Deploy to GitHub Pages" --ref main
