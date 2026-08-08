@@ -11,6 +11,7 @@ const navLinks = [
   { label: "Timeline", href: "#timeline" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "Projects", href: "#live-projects" },
+  { label: "Open Source", href: "#open-source" },
   { label: "DevSecOps", href: "#devsecops" },
   { label: "Contact", href: "#contact" },
 ];
