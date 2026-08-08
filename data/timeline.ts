@@ -7,6 +7,8 @@ export interface TimelineItem {
   period: string;
   location?: string;
   tech?: string[];
+  /** Optional short tag rendered on job entries, e.g. "Freelance" */
+  badge?: string;
 }
 
 export const timeline: TimelineItem[] = [
@@ -16,6 +18,7 @@ export const timeline: TimelineItem[] = [
     company: "ArtSwara (PT Mahhasa Artswara Persada)",
     period: "June 2026 – Present",
     location: "Jakarta",
+    badge: "Freelance",
   },
   {
     type: "project",

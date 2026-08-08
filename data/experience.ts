@@ -14,7 +14,7 @@ export const experiences: Experience[] = [
     role: "Freelance Fullstack Web Developer",
     period: "June 2026 – Present",
     location: "Jakarta",
-    type: "Contract",
+    type: "Freelance",
     summary:
       "Developing the ArtSwara e-commerce platform (artswara.co.id) under a service agreement with PT Asia Media Grup Agensi — customer e-commerce features, admin panel, and an offline POS module integrated with the existing ticketing system.",
     highlights: [
