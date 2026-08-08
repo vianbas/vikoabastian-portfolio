@@ -41,6 +41,7 @@ export const caseStudies: CaseStudy[] = [
     period: "2024–2025",
     domain: "E-channel banking · ATM/CRM operations · Monitoring · Reporting",
     role: "Fullstack Engineer / DevOps Support / Security Remediation Support",
+    image: "/project-shots/echannelgo-home.webp",
     tech: ["Spring Boot", "React.js", "SQL Server", "Jenkins", "Mandiri Private Cloud"],
     highlights: [
       "Built backend services using Spring Boot",
