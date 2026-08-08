@@ -44,6 +44,9 @@ yarn-error.log*
 # local token storage (never commit)
 /.tokensave/
 
+# raw screenshot originals (optimized WebP copies live in /public/project-shots)
+/project-screenshots/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

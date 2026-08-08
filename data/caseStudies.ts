@@ -6,6 +6,10 @@ export interface CaseStudy {
   role: string;
   tech: string[];
   highlights: string[];
+  /** Optional screenshot shown at the top of the card */
+  image?: string;
+  /** Set to false to hide the default NDA note (e.g. public projects) */
+  nda?: boolean;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -15,6 +19,8 @@ export const caseStudies: CaseStudy[] = [
     period: "2026",
     domain: "E-commerce · Payment gateway · Logistics · Ticketing · POS",
     role: "Freelance Fullstack Web Developer (Contract)",
+    image: "/project-shots/artswara-home.webp",
+    nda: false,
     tech: ["Laravel", "React", "Inertia.js", "Vite", "Tailwind CSS", "MySQL", "Midtrans", "RabbitMQ"],
     highlights: [
       "Developed product catalog with categories and search",
