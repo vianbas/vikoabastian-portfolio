@@ -36,7 +36,14 @@ export default function Timeline() {
                               role
                             </span>
                             <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-base">{item.title}</h3>
-                            <p className="text-sky-700 dark:text-sky-400 text-sm font-medium">{item.company}</p>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <p className="text-sky-700 dark:text-sky-400 text-sm font-medium">{item.company}</p>
+                              {item.badge && (
+                                <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 dark:bg-amber-950 dark:border-amber-800 dark:text-amber-300">
+                                  {item.badge}
+                                </span>
+                              )}
+                            </div>
                           </div>
                           <div className="text-right shrink-0">
                             <p className="text-slate-600 dark:text-slate-400 text-sm">{item.period}</p>
