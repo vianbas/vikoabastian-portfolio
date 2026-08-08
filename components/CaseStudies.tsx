@@ -25,7 +25,19 @@ export default function CaseStudies() {
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {caseStudies.map((cs, i) => (
             <Reveal key={cs.id} delay={(i % 3) * 80} className="h-full">
-              <article className="h-full flex flex-col p-6 rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 group dark:border-slate-800 dark:bg-slate-950 dark:hover:border-sky-800 dark:hover:shadow-black/40">
+              <article className="h-full flex flex-col rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 group overflow-hidden dark:border-slate-800 dark:bg-slate-950 dark:hover:border-sky-800 dark:hover:shadow-black/40">
+                {cs.image && (
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-200 dark:border-slate-800">
+                    <img
+                      src={cs.image}
+                      alt={`${cs.title} screenshot`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col flex-1 p-6">
                 {/* Domain */}
                 <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mb-3 leading-snug">{cs.domain}</p>
 
@@ -61,9 +73,12 @@ export default function CaseStudies() {
                 </div>
 
                 {/* NDA note */}
-                <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
-                  NDA · details available on request
-                </p>
+                {cs.nda !== false && (
+                  <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
+                    NDA · details available on request
+                  </p>
+                )}
+                </div>
               </article>
             </Reveal>
           ))}

@@ -23,6 +23,17 @@ export default function LiveProjects() {
               <article className="h-full flex flex-col rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 group overflow-hidden dark:border-slate-800 dark:bg-slate-900 dark:hover:border-sky-800 dark:hover:shadow-black/40">
                 <div className="h-1 bg-gradient-to-r from-sky-400 to-emerald-400" />
 
+                {project.image && (
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-100 dark:border-slate-800">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+
                 <div className="flex flex-col flex-1 p-6">
                   {/* Header */}
                   <div className="flex items-start justify-between gap-3 mb-1">
