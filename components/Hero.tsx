@@ -112,16 +112,16 @@ export default function Hero() {
         // type the command
         for (let i = 1; i <= cmd.length; i++) {
           setLive((s) => ({ ...s, typed: cmd.slice(0, i) }));
-          await sleep(34);
+          await sleep(20);
         }
-        await sleep(240);
+        await sleep(160);
 
         // reveal output lines
         for (let j = 0; j < groups[g].output.length; j++) {
           setLive((s) => ({ ...s, shown: s.shown + 1 }));
-          await sleep(130);
+          await sleep(80);
         }
-        await sleep(360);
+        await sleep(240);
       }
       setLive({ group: groups.length, typed: "", shown: 0 });
       setFinished(true);
