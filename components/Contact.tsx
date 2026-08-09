@@ -1,11 +1,15 @@
+"use client";
+
 import { siteConfig } from "@/data/site";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
+import { useLang } from "@/lib/i18n";
 
 const cardClass =
   "h-full group flex flex-col items-center gap-3 p-6 rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-sky-800 dark:hover:shadow-black/40";
 
 export default function Contact() {
+  const { t } = useLang();
   return (
     <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
       {/* Soft glow behind the section */}
@@ -17,13 +21,13 @@ export default function Contact() {
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <Reveal>
           <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-            {"// Contact"}
+            {t("contact.eyebrow")}
           </p>
           <h2 className="text-3xl md:text-4xl font-bold mb-4 heading-gradient">
-            Let&apos;s work together
+            {t("contact.title")}
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-lg mb-12 max-w-xl mx-auto">
-            Open to senior engineering roles, freelance engagements, and collaboration on banking, fintech, and enterprise systems.
+            {t("contact.subtitle")}
           </p>
         </Reveal>
 
@@ -38,7 +42,7 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">Email</div>
+                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">{t("contact.email")}</div>
                 <div className="text-slate-800 dark:text-slate-200 text-sm font-medium group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors break-all">
                   {siteConfig.email}
                 </div>
@@ -60,7 +64,7 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">LinkedIn</div>
+                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">{t("contact.linkedin")}</div>
                 <div className="text-slate-800 dark:text-slate-200 text-sm font-medium group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors break-all">
                   {siteConfig.linkedinDisplay}
                 </div>
@@ -82,7 +86,7 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">GitHub</div>
+                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">{t("contact.github")}</div>
                 <div className="text-slate-800 dark:text-slate-200 text-sm font-medium group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors">
                   {siteConfig.githubDisplay}
                 </div>
@@ -100,7 +104,7 @@ export default function Contact() {
                 </svg>
               </div>
               <div>
-                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">Location</div>
+                <div className="text-slate-500 dark:text-slate-400 text-xs mb-1">{t("contact.location")}</div>
                 <div className="text-slate-800 dark:text-slate-200 text-sm font-medium">{siteConfig.location}</div>
               </div>
             </div>
@@ -111,10 +115,10 @@ export default function Contact() {
         <Reveal delay={150}>
           <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 mb-10 text-left dark:border-slate-800 dark:bg-slate-900">
             <h3 className="text-lg font-semibold text-slate-900 mb-1 dark:text-slate-100">
-              Send me a message
+              {t("contact.formTitle")}
             </h3>
             <p className="text-sm text-slate-500 mb-6 dark:text-slate-400">
-              Fill this in and it lands straight in my inbox.
+              {t("contact.formSub")}
             </p>
             <ContactForm />
           </div>
@@ -126,7 +130,7 @@ export default function Contact() {
             href={`mailto:${siteConfig.email}`}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 text-white font-semibold text-sm transition-all shadow-md shadow-sky-600/20 hover:shadow-sky-500/30 hover:-translate-y-0.5 dark:from-sky-500 dark:to-sky-400 dark:text-slate-950 dark:hover:from-sky-400 dark:hover:to-sky-300"
           >
-            Send me an email
+            {t("contact.cta")}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
             </svg>

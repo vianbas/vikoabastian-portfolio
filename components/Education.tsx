@@ -1,17 +1,21 @@
+"use client";
+
 import { educations } from "@/data/education";
 import Reveal from "@/components/Reveal";
+import { pick, useLang } from "@/lib/i18n";
 
 export default function Education() {
+  const { lang, t } = useLang();
   return (
     <section id="education" className="py-24 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="text-center mb-14">
             <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-              {"// Education"}
+              {t("education.eyebrow")}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
-              Academic Background
+              {t("education.title")}
             </h2>
           </div>
         </Reveal>
@@ -34,7 +38,7 @@ export default function Education() {
                   <div className="flex-1 min-w-0">
                     <h3 className="text-slate-900 dark:text-slate-100 font-semibold">{edu.institution}</h3>
                     <p className="text-sky-700 dark:text-sky-400 text-sm mt-1">
-                      {edu.degree}, {edu.field}
+                      {pick(lang, edu.degree)}, {pick(lang, edu.field)}
                     </p>
                     <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-200 dark:border-slate-800">
                       <span className="text-slate-500 dark:text-slate-400 text-xs">{edu.period}</span>

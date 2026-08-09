@@ -1,7 +1,11 @@
+"use client";
+
 import { caseStudies } from "@/data/caseStudies";
 import Reveal from "@/components/Reveal";
+import { pick, useLang } from "@/lib/i18n";
 
 export default function CaseStudies() {
+  const { lang, t } = useLang();
   return (
     <section id="case-studies" className="py-24 bg-slate-50 dark:bg-slate-900 relative overflow-hidden">
       {/* Subtle dot texture */}
@@ -11,13 +15,13 @@ export default function CaseStudies() {
         <Reveal>
           <div className="text-center mb-14">
             <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-              {"// Featured Work"}
+              {t("caseStudies.eyebrow")}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
-              Case Studies
+              {t("caseStudies.title")}
             </h2>
             <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-              Selected projects from banking, fintech, payments, and enterprise software delivery.
+              {t("caseStudies.subtitle")}
             </p>
           </div>
         </Reveal>
@@ -30,7 +34,7 @@ export default function CaseStudies() {
                   <div className="relative aspect-[16/10] overflow-hidden border-b border-slate-200 dark:border-slate-800">
                     <img
                       src={cs.image}
-                      alt={`${cs.title} screenshot`}
+                      alt={`${pick(lang, cs.title)} ${t("caseStudies.screenshot")}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -39,20 +43,22 @@ export default function CaseStudies() {
 
                 <div className="flex flex-col flex-1 p-6">
                 {/* Domain */}
-                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mb-3 leading-snug">{cs.domain}</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-mono mb-3 leading-snug">
+                  {pick(lang, cs.domain)}
+                </p>
 
                 {/* Title */}
                 <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-base leading-snug mb-2 group-hover:text-sky-700 dark:group-hover:text-sky-300 transition-colors">
-                  {cs.title}
+                  {pick(lang, cs.title)}
                 </h3>
 
                 {/* Period + Role */}
                 <p className="text-slate-400 dark:text-slate-500 text-xs font-mono mb-1">{cs.period}</p>
-                <p className="text-sky-700 dark:text-sky-400 text-xs mb-4">{cs.role}</p>
+                <p className="text-sky-700 dark:text-sky-400 text-xs mb-4">{pick(lang, cs.role)}</p>
 
                 {/* Highlights */}
                 <ul className="space-y-1.5 flex-1 mb-5">
-                  {cs.highlights.map((h, j) => (
+                  {pick(lang, cs.highlights).map((h, j) => (
                     <li key={j} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400">
                       <span className="text-sky-600 dark:text-sky-400 mt-0.5 shrink-0">▸</span>
                       {h}
@@ -75,7 +81,7 @@ export default function CaseStudies() {
                 {/* NDA note */}
                 {cs.nda !== false && (
                   <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">
-                    NDA · details available on request
+                    {t("caseStudies.nda")}
                   </p>
                 )}
                 </div>

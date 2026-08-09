@@ -1,20 +1,8 @@
-import Reveal from "@/components/Reveal";
+"use client";
 
-const disciplines = [
-  "Feature branch isolation",
-  "Code review readiness",
-  "Build validation before merge",
-  "Dependency and vulnerability checks",
-  "CI/CD automation",
-  "Secure access and authentication integration",
-  "Environment-aware configuration",
-  "Production readiness checks",
-  "Penetration testing and vulnerability remediation support",
-  "Performance testing before production release",
-  "Deployment discipline across DC/DRC or cloud environments",
-  "Monitoring and troubleshooting readiness",
-  "Clear documentation and reproducible commands",
-];
+import Reveal from "@/components/Reveal";
+import { useLang } from "@/lib/i18n";
+import { translations } from "@/data/translations";
 
 const workflowCode = `git status
 git checkout feature/example-branch
@@ -29,19 +17,21 @@ git commit -m "feat: implement production-ready feature"
 git push origin feature/example-branch`;
 
 export default function DevSecOpsWorkflow() {
+  const { lang, t } = useLang();
+  const disciplines: readonly string[] = translations[lang].devsecops.disciplines;
   return (
     <section id="devsecops" className="py-24 bg-white dark:bg-slate-950">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="text-center mb-14">
             <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-              {"// Engineering Discipline"}
+              {t("devsecops.eyebrow")}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
-              DevSecOps Workflow
+              {t("devsecops.title")}
             </h2>
             <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-              Delivery discipline applied consistently — from local development to production deployment.
+              {t("devsecops.subtitle")}
             </p>
           </div>
         </Reveal>
@@ -51,7 +41,7 @@ export default function DevSecOpsWorkflow() {
           <Reveal>
             <div>
               <h3 className="text-slate-700 dark:text-slate-300 font-semibold mb-5 text-sm uppercase tracking-wider">
-                Engineering practices
+                {t("devsecops.practices")}
               </h3>
               <ul className="space-y-3">
                 {disciplines.map((item, i) => (
@@ -70,7 +60,7 @@ export default function DevSecOpsWorkflow() {
           <Reveal delay={120}>
             <div>
               <h3 className="text-slate-700 dark:text-slate-300 font-semibold mb-5 text-sm uppercase tracking-wider">
-                Sample workflow
+                {t("devsecops.sampleWorkflow")}
               </h3>
               <div className="rounded-xl border border-slate-300 overflow-hidden shadow-md shadow-slate-200/60 hover:shadow-lg hover:shadow-slate-300/50 transition-shadow dark:border-slate-700 dark:shadow-black/30 dark:hover:shadow-black/50">
                 {/* Terminal header */}
@@ -94,7 +84,7 @@ export default function DevSecOpsWorkflow() {
               {/* Notes */}
               <div className="mt-4 p-4 rounded-lg border border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
                 <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
-                  Every commit on production-bound systems goes through audit, lint, test, and build validation before merge. Deployments are environment-aware and follow DC/DRC readiness checklists.
+                  {t("devsecops.notes")}
                 </p>
               </div>
             </div>
