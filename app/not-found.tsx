@@ -1,6 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
 export default function NotFound() {
+  const { t } = useLang();
   return (
     <main className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-slate-950 px-4">
       {/* Subtle background grid */}
@@ -20,7 +24,7 @@ export default function NotFound() {
               &gt;
             </span>
             <span className="text-slate-900 font-semibold dark:text-slate-100">
-              404 — page not found
+              {t("notFound.title")}
             </span>
           </div>
         </div>

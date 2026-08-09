@@ -1,13 +1,18 @@
+import type { Localized } from "@/lib/i18n";
+
 export interface SkillGroup {
-  category: string;
-  description: string;
+  category: Localized<string>;
+  description: Localized<string>;
   skills: string[];
 }
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Backend Engineering",
-    description: "Server-side systems, APIs, and business logic",
+    category: { en: "Backend Engineering", id: "Rekayasa Backend" },
+    description: {
+      en: "Server-side systems, APIs, and business logic",
+      id: "Sistem server-side, API, dan logika bisnis",
+    },
     skills: [
       "Java",
       "Spring Boot",
@@ -23,8 +28,11 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "Frontend Engineering",
-    description: "User interfaces, dashboards, and browser-side applications",
+    category: { en: "Frontend Engineering", id: "Rekayasa Frontend" },
+    description: {
+      en: "User interfaces, dashboards, and browser-side applications",
+      id: "Antarmuka pengguna, dashboard, dan aplikasi sisi browser",
+    },
     skills: [
       "React.js",
       "AngularJS",
@@ -39,13 +47,19 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "Database Engineering",
-    description: "Relational databases, query optimization, and data modeling",
+    category: { en: "Database Engineering", id: "Rekayasa Database" },
+    description: {
+      en: "Relational databases, query optimization, and data modeling",
+      id: "Database relasional, optimasi query, dan pemodelan data",
+    },
     skills: ["Oracle SQL", "MySQL", "SQL Server", "HQL"],
   },
   {
-    category: "DevSecOps & Infrastructure",
-    description: "CI/CD pipelines, cloud, containerization, and deployment",
+    category: { en: "DevSecOps & Infrastructure", id: "DevSecOps & Infrastruktur" },
+    description: {
+      en: "CI/CD pipelines, cloud, containerization, and deployment",
+      id: "Pipeline CI/CD, cloud, kontainerisasi, dan deployment",
+    },
     skills: [
       "Jenkins",
       "Docker",
@@ -61,8 +75,11 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
-    category: "Observability, Security & Quality",
-    description: "Monitoring, security hardening, and engineering quality",
+    category: { en: "Observability, Security & Quality", id: "Observability, Keamanan & Kualitas" },
+    description: {
+      en: "Monitoring, security hardening, and engineering quality",
+      id: "Monitoring, penguatan keamanan, dan kualitas rekayasa",
+    },
     skills: [
       "ELK Stack",
       "System Monitoring",

@@ -3,20 +3,36 @@
 import { useState, useEffect } from "react";
 import { siteConfig } from "@/data/site";
 import ThemeToggle from "@/components/ThemeToggle";
+import LanguageToggle from "@/components/LanguageToggle";
+import { useLang } from "@/lib/i18n";
 
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Timeline", href: "#timeline" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Projects", href: "#live-projects" },
-  { label: "Open Source", href: "#open-source" },
-  { label: "DevSecOps", href: "#devsecops" },
-  { label: "Contact", href: "#contact" },
+/** Stable hrefs used for scroll-spy detection — independent of language. */
+const NAV_HREFS = [
+  "#about",
+  "#skills",
+  "#experience",
+  "#timeline",
+  "#case-studies",
+  "#live-projects",
+  "#open-source",
+  "#devsecops",
+  "#contact",
 ];
 
 export default function Navbar() {
+  const { t } = useLang();
+  const navLinks = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.experience"), href: "#experience" },
+    { label: t("nav.timeline"), href: "#timeline" },
+    { label: t("nav.caseStudies"), href: "#case-studies" },
+    { label: t("nav.projects"), href: "#live-projects" },
+    { label: t("nav.openSource"), href: "#open-source" },
+    { label: t("nav.devsecops"), href: "#devsecops" },
+    { label: t("nav.contact"), href: "#contact" },
+  ];
+
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState("");
@@ -26,9 +42,9 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
       const scrollY = window.scrollY + 80;
       let current = "";
-      for (const link of navLinks) {
-        const el = document.getElementById(link.href.slice(1));
-        if (el && el.offsetTop <= scrollY) current = link.href.slice(1);
+      for (const href of NAV_HREFS) {
+        const el = document.getElementById(href.slice(1));
+        if (el && el.offsetTop <= scrollY) current = href.slice(1);
       }
       setActiveId(current);
     };
@@ -83,7 +99,7 @@ export default function Navbar() {
               href={siteConfig.github}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
+              aria-label={t("nav.github")}
               className="ml-1 p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all inline-flex items-center dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -95,12 +111,15 @@ export default function Navbar() {
             <ThemeToggle />
           </li>
           <li>
+            <LanguageToggle />
+          </li>
+          <li>
             <a
               href={siteConfig.resumeUrl}
               download
               className="ml-2 text-sm px-4 py-2 rounded-md bg-sky-50 border border-sky-200 text-sky-700 hover:bg-sky-100 hover:border-sky-300 transition-all dark:bg-sky-950 dark:border-sky-800 dark:text-sky-300 dark:hover:bg-sky-900 dark:hover:border-sky-700"
             >
-              Resume
+              {t("nav.resume")}
             </a>
           </li>
         </ul>
@@ -108,10 +127,11 @@ export default function Navbar() {
         {/* Mobile hamburger */}
         <div className="flex items-center gap-1 md:hidden">
           <ThemeToggle />
+          <LanguageToggle />
           <button
             onClick={() => setOpen(!open)}
             className="text-slate-600 hover:text-slate-900 p-2 rounded-md hover:bg-slate-100 transition-colors dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={open}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -158,7 +178,7 @@ export default function Navbar() {
               onClick={handleLinkClick}
               className="block text-slate-700 hover:text-slate-900 text-sm px-3 py-2.5 rounded-md hover:bg-slate-100 transition-all dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800"
             >
-              GitHub
+              {t("nav.github")}
             </a>
           </li>
           <li className="pt-1 pb-2">
@@ -168,7 +188,7 @@ export default function Navbar() {
               onClick={handleLinkClick}
               className="block text-center text-sm px-4 py-2.5 rounded-md bg-sky-50 border border-sky-200 text-sky-700 hover:bg-sky-100 transition-all dark:bg-sky-950 dark:border-sky-800 dark:text-sky-300 dark:hover:bg-sky-900"
             >
-              Download Resume
+              {t("nav.downloadResume")}
             </a>
           </li>
         </ul>

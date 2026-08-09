@@ -1,22 +1,26 @@
+"use client";
+
 import { siteConfig } from "@/data/site";
-
-const exploreLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
-  { label: "Case Studies", href: "#case-studies" },
-  { label: "Projects", href: "#live-projects" },
-  { label: "DevSecOps", href: "#devsecops" },
-];
-
-const contactLinks = [
-  { label: "Email", href: `mailto:${siteConfig.email}`, external: false },
-  { label: "LinkedIn", href: siteConfig.linkedin, external: true },
-  { label: "GitHub", href: siteConfig.github, external: true },
-  { label: "Resume", href: siteConfig.resumeUrl, download: true },
-];
+import { useLang } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useLang();
+  const exploreLinks = [
+    { label: t("nav.about"), href: "#about" },
+    { label: t("nav.skills"), href: "#skills" },
+    { label: t("nav.experience"), href: "#experience" },
+    { label: t("nav.caseStudies"), href: "#case-studies" },
+    { label: t("nav.projects"), href: "#live-projects" },
+    { label: t("nav.devsecops"), href: "#devsecops" },
+  ];
+
+  const contactLinks = [
+    { label: t("contact.email"), href: `mailto:${siteConfig.email}`, external: false },
+    { label: t("contact.linkedin"), href: siteConfig.linkedin, external: true },
+    { label: t("contact.github"), href: siteConfig.github, external: true },
+    { label: t("nav.resume"), href: siteConfig.resumeUrl, download: true },
+  ];
+
   return (
     <footer className="border-t border-slate-200 bg-slate-50 dark:border-slate-800 dark:bg-slate-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -29,8 +33,7 @@ export default function Footer() {
               </span>
             </a>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-xs">
-              Fullstack Software Engineer &amp; DevSecOps Engineer building secure,
-              reliable systems for banking, fintech, payments, and enterprise platforms.
+              {t("footer.brand")}
             </p>
             <p className="mt-3 text-xs text-slate-500 dark:text-slate-500">
               {siteConfig.location}
@@ -40,7 +43,7 @@ export default function Footer() {
           {/* Explore */}
           <div>
             <h3 className="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
-              Explore
+              {t("footer.explore")}
             </h3>
             <ul className="space-y-2.5">
               {exploreLinks.map((link) => (
@@ -59,7 +62,7 @@ export default function Footer() {
           {/* Contact */}
           <div>
             <h3 className="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
-              Contact
+              {t("footer.contact")}
             </h3>
             <ul className="space-y-2.5">
               {contactLinks.map((link) => (
@@ -83,13 +86,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-10 pt-6 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-500 dark:text-slate-500">
-            © 2024–present {siteConfig.name}. Built with Next.js, TypeScript &amp; Tailwind CSS.
+            {t("footer.copyright").replace("{name}", siteConfig.name)}
           </p>
           <a
             href="#hero"
             className="inline-flex items-center gap-1.5 text-xs text-slate-500 hover:text-sky-600 transition-colors dark:text-slate-400 dark:hover:text-sky-400"
           >
-            Back to top
+            {t("footer.backToTop")}
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
             </svg>

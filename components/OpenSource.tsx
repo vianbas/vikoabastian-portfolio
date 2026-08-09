@@ -1,29 +1,33 @@
+"use client";
+
 import { openSourceContributions } from "@/data/openSource";
 import Reveal from "@/components/Reveal";
+import { useLang } from "@/lib/i18n";
 
-function statusBadge(status: "open" | "merged" | "closed") {
+function statusBadge(status: "open" | "merged" | "closed", t: (k: string) => string) {
   if (status === "merged") {
     return (
       <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-violet-50 text-violet-700 border border-violet-200 uppercase tracking-wide dark:bg-violet-950 dark:text-violet-300 dark:border-violet-800">
-        Merged
+        {t("openSource.merged")}
       </span>
     );
   }
   if (status === "closed") {
     return (
       <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-600 border border-slate-200 uppercase tracking-wide dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700">
-        Closed
+        {t("openSource.closed")}
       </span>
     );
   }
   return (
     <span className="shrink-0 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 uppercase tracking-wide dark:bg-emerald-950 dark:text-emerald-300 dark:border-emerald-800">
-      Open PR
+      {t("openSource.openPr")}
     </span>
   );
 }
 
 export default function OpenSource() {
+  const { t } = useLang();
   return (
     <section
       id="open-source"
@@ -33,13 +37,13 @@ export default function OpenSource() {
         <Reveal>
           <div className="text-center mb-14">
             <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-              {"// Open Source"}
+              {t("openSource.eyebrow")}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
-              Open Source Contributions
+              {t("openSource.title")}
             </h2>
             <p className="mt-3 text-slate-600 dark:text-slate-400 max-w-xl mx-auto">
-              Upstream contributions to projects I use — small fixes that keep the ecosystem accurate.
+              {t("openSource.subtitle")}
             </p>
           </div>
         </Reveal>
@@ -59,7 +63,7 @@ export default function OpenSource() {
                       </p>
                       <p className="text-sky-600 dark:text-sky-400 text-sm mt-0.5">{c.contributionType}</p>
                     </div>
-                    {statusBadge(c.status)}
+                    {statusBadge(c.status, t)}
                   </div>
 
                   {/* Title + PR link */}
@@ -108,7 +112,7 @@ export default function OpenSource() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded text-xs font-medium text-violet-700 hover:text-violet-900 border border-violet-200 hover:border-violet-300 hover:bg-violet-50 transition-colors dark:text-violet-300 dark:hover:text-violet-200 dark:border-violet-800 dark:hover:bg-violet-950"
                     >
-                      View PR →
+                      {t("openSource.viewPr")}
                     </a>
                   </div>
                 </div>

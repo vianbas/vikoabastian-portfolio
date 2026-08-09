@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { siteConfig } from "@/data/site";
+import { useLang } from "@/lib/i18n";
+import { translations } from "@/data/translations";
 
 const PROMPT = "~/viko $";
 
@@ -13,18 +15,6 @@ type TerminalGroup = {
   isActions?: boolean;
 };
 
-const identity: OutputLine[] = [
-  { text: "Viko Andri Bastian Manurung", emphasis: true },
-  { text: "Fullstack Software Engineer · DevSecOps Engineer" },
-  { text: "Jakarta, ID · 8+ years · banking / fintech" },
-];
-
-const about: OutputLine[] = [
-  { text: "Senior fullstack engineer with DevSecOps strength." },
-  { text: "Building secure, reliable software for banking," },
-  { text: "fintech, payments, and enterprise platforms." },
-];
-
 const actions: { label: string; href: string; download?: boolean }[] = [
   { label: "./view-experience", href: "#experience" },
   { label: "./view-case-studies", href: "#case-studies" },
@@ -33,11 +23,16 @@ const actions: { label: string; href: string; download?: boolean }[] = [
   { label: "./contact", href: "#contact" },
 ];
 
-const groups: TerminalGroup[] = [
-  { command: "whoami", output: identity },
-  { command: "cat about.md", output: about },
-  { command: "ls -1 actions/", output: [], isActions: true },
-];
+function buildGroups(
+  lang: "en" | "id",
+): TerminalGroup[] {
+  const dict = translations[lang];
+  return [
+    { command: "whoami", output: [...dict.hero.identity] },
+    { command: "cat about.md", output: [...dict.hero.about] },
+    { command: "ls -1 actions/", output: [], isActions: true },
+  ];
+}
 
 type LiveState = {
   /** Index of the group currently animating; groups.length once finished */
@@ -81,8 +76,11 @@ function OutputLine({
 }
 
 export default function Hero() {
+  const { lang, t } = useLang();
   const [live, setLive] = useState<LiveState>({ group: 0, typed: "", shown: 0 });
   const [finished, setFinished] = useState(false);
+
+  const groups = useMemo(() => buildGroups(lang), [lang]);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -133,7 +131,7 @@ export default function Hero() {
       cancelled = true;
       timeouts.forEach((id) => window.clearTimeout(id));
     };
-  }, []);
+  }, [groups]);
 
   return (
     <section
@@ -156,7 +154,7 @@ export default function Hero() {
           <div className="flex justify-center mb-10 fade-up" style={{ animationDelay: "0.1s" }}>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-sky-200 bg-sky-50 text-sky-700 text-xs font-mono tracking-widest uppercase dark:border-sky-800 dark:bg-sky-950 dark:text-sky-300">
               <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-              {siteConfig.availableForRolesText}
+              {t("hero.availableForRoles")}
             </div>
           </div>
         )}
@@ -244,7 +242,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 text-xs font-mono fade-up"
         style={{ animationDelay: "1.4s" }}
       >
-        <span>scroll</span>
+        <span>{t("hero.scroll")}</span>
         <svg
           className="w-4 h-4 animate-bounce"
           fill="none"

@@ -1,19 +1,23 @@
+"use client";
+
 import { timeline } from "@/data/timeline";
 import Reveal from "@/components/Reveal";
+import { pick, useLang } from "@/lib/i18n";
 
 export default function Timeline() {
+  const { lang, t } = useLang();
   return (
     <section id="timeline" className="py-24 bg-slate-50 dark:bg-slate-900">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal>
           <div className="text-center mb-14">
             <p className="text-sky-600 dark:text-sky-400 text-sm font-mono uppercase tracking-widest mb-3">
-              {"// Career"}
+              {t("timeline.eyebrow")}
             </p>
             <h2 className="text-3xl md:text-4xl font-bold heading-gradient">
-              Timeline
+              {t("timeline.title")}
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 text-sm mt-3">Jobs &amp; key projects, newest first</p>
+            <p className="text-slate-500 dark:text-slate-400 text-sm mt-3">{t("timeline.subtitle")}</p>
           </div>
         </Reveal>
 
@@ -33,14 +37,16 @@ export default function Timeline() {
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                           <div>
                             <span className="text-xs font-mono uppercase tracking-widest text-sky-600 dark:text-sky-400 mb-1 block">
-                              role
+                              {t("timeline.role")}
                             </span>
-                            <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-base">{item.title}</h3>
+                            <h3 className="text-slate-900 dark:text-slate-100 font-semibold text-base">
+                              {pick(lang, item.title)}
+                            </h3>
                             <div className="flex items-center gap-2 flex-wrap">
                               <p className="text-sky-700 dark:text-sky-400 text-sm font-medium">{item.company}</p>
                               {item.badge && (
                                 <span className="text-xs px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 dark:bg-amber-950 dark:border-amber-800 dark:text-amber-300">
-                                  {item.badge}
+                                  {pick(lang, item.badge)}
                                 </span>
                               )}
                             </div>
@@ -62,9 +68,11 @@ export default function Timeline() {
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
                           <div>
                             <span className="text-xs font-mono uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-1 block">
-                              project
+                              {t("timeline.project")}
                             </span>
-                            <h4 className="text-slate-800 dark:text-slate-200 font-medium text-sm">{item.title}</h4>
+                            <h4 className="text-slate-800 dark:text-slate-200 font-medium text-sm">
+                              {pick(lang, item.title)}
+                            </h4>
                             <p className="text-slate-500 dark:text-slate-400 text-xs">{item.company}</p>
                           </div>
                           <p className="text-slate-500 dark:text-slate-400 text-xs font-mono shrink-0">{item.period}</p>

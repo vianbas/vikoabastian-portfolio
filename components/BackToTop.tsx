@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useLang } from "@/lib/i18n";
 
 export default function BackToTop() {
+  const { t } = useLang();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function BackToTop() {
   return (
     <button
       type="button"
-      aria-label="Back to top"
+      aria-label={t("backToTop.label")}
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       className={`fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-slate-900 text-white shadow-lg shadow-slate-900/20 hover:bg-sky-600 hover:shadow-sky-600/30 flex items-center justify-center transition-all duration-300 dark:bg-sky-500 dark:text-slate-950 dark:hover:bg-sky-400 dark:shadow-black/50 ${
         visible

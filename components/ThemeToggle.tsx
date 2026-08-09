@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { useLang } from "@/lib/i18n";
 
 const THEME_EVENT = "viko:themechange";
 
@@ -39,12 +40,13 @@ function toggleTheme() {
 
 export default function ThemeToggle() {
   const dark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const { t } = useLang();
 
   return (
     <button
       type="button"
       onClick={toggleTheme}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={dark ? t("themeToggle.toLight") : t("themeToggle.toDark")}
       className="p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-colors dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800"
     >
       {dark ? (
