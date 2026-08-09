@@ -1,5 +1,6 @@
 import { siteConfig } from "@/data/site";
 import Reveal from "@/components/Reveal";
+import ContactForm from "@/components/ContactForm";
 
 const cardClass =
   "h-full group flex flex-col items-center gap-3 p-6 rounded-xl border border-slate-200 bg-white hover:border-sky-300 hover:shadow-lg hover:shadow-sky-100/60 hover:-translate-y-1 transition-all duration-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-sky-800 dark:hover:shadow-black/40";
@@ -106,8 +107,21 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        {/* CTA */}
+        {/* Contact form */}
         <Reveal delay={150}>
+          <div className="rounded-xl border border-slate-200 bg-white shadow-sm p-6 sm:p-8 mb-10 text-left dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-lg font-semibold text-slate-900 mb-1 dark:text-slate-100">
+              Send me a message
+            </h3>
+            <p className="text-sm text-slate-500 mb-6 dark:text-slate-400">
+              Fill this in and it lands straight in my inbox.
+            </p>
+            <ContactForm />
+          </div>
+        </Reveal>
+
+        {/* CTA */}
+        <Reveal delay={200}>
           <a
             href={`mailto:${siteConfig.email}`}
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-lg bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-700 hover:to-sky-600 text-white font-semibold text-sm transition-all shadow-md shadow-sky-600/20 hover:shadow-sky-500/30 hover:-translate-y-0.5 dark:from-sky-500 dark:to-sky-400 dark:text-slate-950 dark:hover:from-sky-400 dark:hover:to-sky-300"

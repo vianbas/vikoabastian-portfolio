@@ -6,6 +6,9 @@ export const siteConfig = {
   keywords: ["Fullstack Engineer", "DevSecOps Engineer", "Java", "Spring Boot", "React", "Banking", "Fintech", "Payment Gateway", "Jenkins", "Docker", "GCP", "Jakarta", "Indonesia"],
   url: "https://vikoabastian.com",
   email: "contact@vikoabastian.com",
+  // Form backend for the Contact form (static export has no server).
+  // FormSubmit AJAX endpoint — swap for Web3Forms/Formspree by changing this URL.
+  contactFormEndpoint: "https://formsubmit.co/ajax/contact@vikoabastian.com",
   linkedin: "https://linkedin.com/in/vikoabastian",
   linkedinDisplay: "linkedin.com/in/vikoabastian",
   github: "https://github.com/vianbas",
