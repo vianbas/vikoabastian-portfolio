@@ -213,10 +213,12 @@ export default function Hero() {
                   </ul>
                 ) : (
                   <div className="space-y-1.5 pl-0 sm:pl-2">
-                    {group.output.slice(0, shown).map((line, idx) => (
-                      <OutputLine key={idx} emphasis={line.emphasis}>
-                        {line.text}
-                      </OutputLine>
+                    {group.output.map((line, idx) => (
+                      <div key={idx} className={idx < shown ? "" : "invisible"}>
+                        <OutputLine emphasis={line.emphasis}>
+                          {line.text}
+                        </OutputLine>
+                      </div>
                     ))}
                   </div>
                 )}
