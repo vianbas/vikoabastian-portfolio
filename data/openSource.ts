@@ -48,7 +48,7 @@ export const openSourceContributions: OpenSourceContribution[] = [
     summary: "Corrected the upstream SECURITY.md, which claimed the database keeps no raw source code — while the FTS5 index (executable_body_fts) actually retains complete function bodies in its content table. The fix makes the data-retention decision the policy exists to inform accurate.",
     highlights: ["Named executable_body_fts as a real store of source text instead of only read_cache","Rewrote the data-retention policy sentence to state full function bodies are retained","Updated the Supported Versions table (6.x → 7.x) to match the current release","Documentation-only: no code, no schema, no behaviour change"],
     prUrl: "https://github.com/aovestdipaperino/tokensave/pull/379",
-    stars: 557,
+    stars: 558,
   },
   {
     id: "VulnerableApp-pr-733",
@@ -65,7 +65,7 @@ export const openSourceContributions: OpenSourceContribution[] = [
     summary: "Opened pull request #733 on SasanLabs/VulnerableApp.",
     highlights: [],
     prUrl: "https://github.com/SasanLabs/VulnerableApp/pull/733",
-    stars: 445,
+    stars: 447,
   },
   {
     id: "VulnerableApp-pr-732",
@@ -82,7 +82,7 @@ export const openSourceContributions: OpenSourceContribution[] = [
     summary: "Opened pull request #732 on SasanLabs/VulnerableApp.",
     highlights: [],
     prUrl: "https://github.com/SasanLabs/VulnerableApp/pull/732",
-    stars: 445,
+    stars: 447,
   },
   {
     id: "VulnerableApp-pr-728",
@@ -99,6 +99,6 @@ export const openSourceContributions: OpenSourceContribution[] = [
     summary: "Opened pull request #728 on SasanLabs/VulnerableApp, which was merged upstream.",
     highlights: [],
     prUrl: "https://github.com/SasanLabs/VulnerableApp/pull/728",
-    stars: 445,
+    stars: 447,
   },
 ];
