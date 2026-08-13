@@ -10,6 +10,8 @@ export interface CaseStudy {
   highlights: Localized<string[]>;
   /** Optional screenshot shown at the top of the card */
   image?: string;
+  /** Optional public site URL, shown as a "Visit Site" link */
+  url?: string;
   /** Set to false to hide the default NDA note (e.g. public projects) */
   nda?: boolean;
 }
@@ -31,6 +33,7 @@ export const caseStudies: CaseStudy[] = [
       id: "Freelance Fullstack Web Developer (Kontrak)",
     },
     image: "/project-shots/artswara-home.webp",
+    url: "https://artswara.co.id",
     nda: false,
     tech: ["Laravel", "React", "Inertia.js", "Vite", "Tailwind CSS", "MySQL", "Midtrans", "RabbitMQ"],
     highlights: {
@@ -63,22 +66,25 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "echannel-go",
     title: {
-      en: "E-Channel Go — ATM & CRM Monitoring and Reporting Platform",
-      id: "E-Channel Go — Platform Monitoring dan Pelaporan ATM & CRM",
+      en: "E-Channel Go — ATM & CRM Vendor Maintenance Reporting Platform",
+      id: "E-Channel Go — Platform Pelaporan Maintenance ATM & CRM untuk Vendor",
     },
     period: "2024–2025",
     domain: {
-      en: "E-channel banking · ATM/CRM operations · Monitoring · Reporting",
-      id: "Perbankan e-channel · Operasional ATM/CRM · Monitoring · Pelaporan",
+      en: "E-channel banking · ATM/CRM maintenance · Vendor portal · Reporting",
+      id: "Perbankan e-channel · Maintenance ATM/CRM · Portal vendor · Pelaporan",
     },
     role: {
       en: "Fullstack Engineer / DevOps Support / Security Remediation Support",
       id: "Fullstack Engineer / Dukungan DevOps / Dukungan Perbaikan Keamanan",
     },
     image: "/project-shots/echannelgo-home.webp",
+    url: "https://echannelgo.bankmandiri.co.id",
     tech: ["Spring Boot", "React.js", "SQL Server", "Jenkins", "Mandiri Private Cloud"],
     highlights: {
       en: [
+        "Vendor-facing portal used by third-party technicians to report ATM and CRM maintenance to Bank Mandiri's Electronic Channel Operation Group",
+        "Built monitoring and reporting dashboards for e-channel operations teams",
         "Built backend services using Spring Boot",
         "Built frontend dashboard functionality using React.js",
         "Integrated SQL Server for reporting and operational data",
@@ -87,6 +93,8 @@ export const caseStudies: CaseStudy[] = [
         "Collaborated with security teams to remediate penetration testing findings",
       ],
       id: [
+        "Portal untuk vendor/teknisi pihak ketiga melaporkan maintenance ATM dan CRM ke Electronic Channel Operation Group Bank Mandiri",
+        "Membangun dashboard monitoring dan pelaporan untuk tim operasional e-channel",
         "Membangun layanan backend menggunakan Spring Boot",
         "Membangun fungsionalitas dashboard frontend menggunakan React.js",
         "Mengintegrasikan SQL Server untuk data pelaporan dan operasional",
