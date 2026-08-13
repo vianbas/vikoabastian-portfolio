@@ -78,6 +78,26 @@ export default function CaseStudies() {
                   ))}
                 </div>
 
+                {/* Visit site */}
+                {cs.url && (
+                  <a
+                    href={cs.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 self-start px-4 py-2 rounded-md bg-sky-600 text-white text-sm font-medium hover:bg-sky-700 transition-colors dark:bg-sky-500 dark:hover:bg-sky-400 dark:text-slate-950"
+                  >
+                    {t("caseStudies.visitSite")}
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                )}
+
                 {/* NDA note */}
                 {cs.nda !== false && (
                   <p className="text-[11px] text-slate-400 dark:text-slate-500 font-mono">

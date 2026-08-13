@@ -58,8 +58,8 @@ export const timeline: TimelineItem[] = [
   {
     type: "project",
     title: {
-      en: "E-Channel Go — ATM & CRM Monitoring Platform",
-      id: "E-Channel Go — Platform Monitoring ATM & CRM",
+      en: "E-Channel Go — ATM & CRM Operations Monitoring",
+      id: "E-Channel Go — Monitoring Operasional ATM & CRM",
     },
     company: "PT Bank Mandiri",
     period: "2024–2025",

@@ -78,6 +78,7 @@ export const translations = {
         "Selected projects from banking, fintech, payments, and enterprise software delivery.",
       nda: "NDA · details available on request",
       screenshot: "screenshot",
+      visitSite: "Visit Site",
     },
     liveProjects: {
       eyebrow: "// Live Projects",
@@ -243,6 +244,7 @@ export const translations = {
         "Proyek pilihan dari pengiriman perangkat lunak perbankan, fintech, pembayaran, dan enterprise.",
       nda: "NDA · detail tersedia berdasarkan permintaan",
       screenshot: "tangkapan layar",
+      visitSite: "Kunjungi Situs",
     },
     liveProjects: {
       eyebrow: "// Proyek Live",
