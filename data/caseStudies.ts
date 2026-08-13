@@ -66,13 +66,13 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "echannel-go",
     title: {
-      en: "E-Channel Go — ATM & CRM Vendor Maintenance Reporting Platform",
-      id: "E-Channel Go — Platform Pelaporan Maintenance ATM & CRM untuk Vendor",
+      en: "E-Channel Go — ATM & CRM Operations Monitoring Platform",
+      id: "E-Channel Go — Platform Monitoring Operasional ATM & CRM",
     },
     period: "2024–2025",
     domain: {
-      en: "E-channel banking · ATM/CRM maintenance · Vendor portal · Reporting",
-      id: "Perbankan e-channel · Maintenance ATM/CRM · Portal vendor · Pelaporan",
+      en: "E-channel banking · ATM/CRM operations · Monitoring · Asset tracking · Reporting",
+      id: "Perbankan e-channel · Operasional ATM/CRM · Monitoring · Asset tracking · Pelaporan",
     },
     role: {
       en: "Fullstack Engineer / DevOps Support / Security Remediation Support",
@@ -83,8 +83,11 @@ export const caseStudies: CaseStudy[] = [
     tech: ["Spring Boot", "React.js", "SQL Server", "Jenkins", "Mandiri Private Cloud"],
     highlights: {
       en: [
-        "Vendor-facing portal used by third-party technicians to report ATM and CRM maintenance to Bank Mandiri's Electronic Channel Operation Group",
-        "Built monitoring and reporting dashboards for e-channel operations teams",
+        "Internal operations platform for Bank Mandiri's Electronic Channel Operation Group, covering the nationwide ATM/CRM fleet",
+        "Monitoring, asset tracking, and reporting dashboards for e-channel operations teams",
+        "Field-technician dispatch module for routing ATM/CRM problem tickets",
+        "Digital onsite checklist forms with multi-level approval workflows",
+        "Business performance dashboards with cost and benefit analysis",
         "Built backend services using Spring Boot",
         "Built frontend dashboard functionality using React.js",
         "Integrated SQL Server for reporting and operational data",
@@ -93,8 +96,11 @@ export const caseStudies: CaseStudy[] = [
         "Collaborated with security teams to remediate penetration testing findings",
       ],
       id: [
-        "Portal untuk vendor/teknisi pihak ketiga melaporkan maintenance ATM dan CRM ke Electronic Channel Operation Group Bank Mandiri",
-        "Membangun dashboard monitoring dan pelaporan untuk tim operasional e-channel",
+        "Platform operasional internal Electronic Channel Operation Group Bank Mandiri, mencakup armada ATM/CRM se-Indonesia",
+        "Dashboard monitoring, asset tracking, dan pelaporan untuk tim operasional e-channel",
+        "Modul dispatch untuk penyaluran tiket problem ATM/CRM ke teknisi lapangan",
+        "Form checklist onsite digital dengan alur approval berjenjang",
+        "Dashboard business performance dengan analisa cost dan benefit",
         "Membangun layanan backend menggunakan Spring Boot",
         "Membangun fungsionalitas dashboard frontend menggunakan React.js",
         "Mengintegrasikan SQL Server untuk data pelaporan dan operasional",
