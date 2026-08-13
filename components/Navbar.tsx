@@ -7,26 +7,24 @@ import LanguageToggle from "@/components/LanguageToggle";
 import { useLang } from "@/lib/i18n";
 
 /** Stable hrefs used for scroll-spy detection — independent of language.
- *  Keep in sync with navLinks: the 5 core sections that matter to visitors.
+ *  Keep in sync with navLinks: the core sections that matter to visitors.
  *  Skills, Timeline, Case Studies and DevSecOps stay on the page but are not
  *  menu items anymore — they are reachable by scrolling. */
 const NAV_HREFS = [
   "#about",
   "#experience",
   "#live-projects",
-  "#open-source",
   "#contact",
 ];
 
 export default function Navbar() {
   const { t } = useLang();
-  // The 5 core sections. Skills, Timeline, Case Studies and DevSecOps remain
+  // The core sections. Skills, Timeline, Case Studies and DevSecOps remain
   // on the page (scrollable) but are intentionally not in the menu.
   const navLinks = [
     { label: t("nav.about"), href: "#about" },
     { label: t("nav.experience"), href: "#experience" },
     { label: t("nav.projects"), href: "#live-projects" },
-    { label: t("nav.openSource"), href: "#open-source" },
     { label: t("nav.contact"), href: "#contact" },
   ];
 

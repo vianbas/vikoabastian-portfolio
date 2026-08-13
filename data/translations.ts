@@ -9,7 +9,6 @@ export const translations = {
       timeline: "Timeline",
       caseStudies: "Case Studies",
       projects: "Projects",
-      openSource: "Open Source",
       devsecops: "DevSecOps",
       contact: "Contact",
       resume: "Resume",
@@ -88,16 +87,6 @@ export const translations = {
       liveDemo: "Live Demo",
       github: "GitHub",
       screenshot: "screenshot",
-    },
-    openSource: {
-      eyebrow: "// Open Source",
-      title: "Open Source Contributions",
-      subtitle:
-        "Upstream contributions to projects I use — small fixes that keep the ecosystem accurate.",
-      merged: "Merged",
-      closed: "Closed",
-      openPr: "Open PR",
-      viewPr: "View PR →",
     },
     devsecops: {
       eyebrow: "// Engineering Discipline",
@@ -185,7 +174,6 @@ export const translations = {
       timeline: "Linimasa",
       caseStudies: "Studi Kasus",
       projects: "Proyek",
-      openSource: "Open Source",
       devsecops: "DevSecOps",
       contact: "Kontak",
       resume: "CV",
@@ -264,16 +252,6 @@ export const translations = {
       liveDemo: "Demo Langsung",
       github: "GitHub",
       screenshot: "tangkapan layar",
-    },
-    openSource: {
-      eyebrow: "// Open Source",
-      title: "Kontribusi Open Source",
-      subtitle:
-        "Kontribusi upstream ke proyek yang saya gunakan — perbaikan kecil yang menjaga ekosistem tetap akurat.",
-      merged: "Digabung",
-      closed: "Ditutup",
-      openPr: "PR Terbuka",
-      viewPr: "Lihat PR →",
     },
     devsecops: {
       eyebrow: "// Disiplin Rekayasa",
